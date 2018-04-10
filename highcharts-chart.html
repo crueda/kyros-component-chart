@@ -8,6 +8,13 @@
         <div id="Chart" width="100%" on-click="_checkSelected"></div>
         <content></content>
 
+        <p>Repositories:</p>
+
+        <template is="dom-repeat" items="[[repos]]">
+            <span>{{item.name}}</span>
+            <br />
+        </template>
+
         <iron-ajax
             id="requestRepos"
             url="https://api.github.com/users/burczu/repos"
