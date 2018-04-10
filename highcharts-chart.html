@@ -1,27 +1,23 @@
 <link rel="import" href="highcharts-behavior.html">
 <link rel="import" href="highcharts-shared-styles.html">
+<link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="highcharts-chart">
     <template>
         <style include="highcharts-shared-styles"></style>
-        <div id="Chart" width="100%" on-click="_checkSelected"></div>
-        <content></content>
-
-        <p>Repositories:</p>
-
-        <template is="dom-repeat" items="[[repos]]">
-            <span>{{item.name}}</span>
-            <br />
-        </template>
 
         <iron-ajax
-            id="elajax"
+            id="kyrosapi"
             url="https://api.github.com/users/burczu/repos"
             params='{"type":"all"}'
             handle-as="json"
             on-response="handleResponse">
         </iron-ajax>
+
+        <div id="Chart" width="100%" on-click="_checkSelected"></div>
+        <content></content>
+
 
     </template>
     <script>
@@ -38,10 +34,10 @@
 
 
             ready: function () {
-                this.__createChart();
+                //this.__createChart();
                 
 
-                //this.$.elajax.generateRequest();
+                this.$.kyrosapi.generateRequest();
                 //this.$.requestRepos.generateRequest();
             },
             handleResponse: function (data) {
