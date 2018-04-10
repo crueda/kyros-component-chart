@@ -1,0 +1,49 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../../bower_components/paper-spinner/paper-spinner.html">
+
+<dom-module id="ajax-generate-request">
+  <template>
+    <style>
+      div{
+        border-radius: 6px;
+        padding: 10px;
+        background-color: beige;
+        width: 120px;
+        text-align: center;
+      }
+    </style>
+    <iron-ajax
+      id="elajax"
+      url="http://jsonplaceholder.typicode.com/users"
+      handle-as="json"
+      last-response="{{users}}"
+      loading="{{cargando}}"
+    ></iron-ajax>
+    <paper-spinner alt="Cargando el usuario..." active="[[cargando]]"></paper-spinner>
+
+    <div on-tap="buscar">
+      Buscar!
+    </div>
+
+<ul>
+<template is="dom-repeat" items="[[users]]">
+  <li>[[item.name]]</li>
+</template>
+</ul>
+  </template>
+  <script>
+    Polymer({
+      is: "ajax-generate-request",
+
+      properties: {
+        cargando: Boolean,
+        users: Array
+      },
+
+      buscar: function() {
+        this.$.elajax.generateRequest();
+      }
+    });
+  </script>
+</dom-module>
