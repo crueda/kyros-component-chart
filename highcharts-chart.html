@@ -24,16 +24,19 @@
             behaviors: [Highcharts.Polymer_BaseBehavior, Highcharts.Polymer_ChartBehavior],
             properties: {type: {type: String, value: 'spline', observer: '_updateType'}},
             //ready: function() {this.__createChart()},
-
+created: function(){
+      console.log("The element was created")
+      console.log(this)
+      console.log(this.$)
+      //console.log(this.$.title) <-- commented, it collapses with created method
+    },
 
             ready: function () {
                 this.$.requestRepos.generateRequest();
             },
             handleResponse: function (data) {
                 //this.repos = data.detail.response;
-                console.log("--->");
                 this.__createChart()
-                console.log("2--->");
             }
         });
     </script>
