@@ -30,7 +30,7 @@
             is: "highcharts-chart",
             behaviors: [Highcharts.Polymer_BaseBehavior, Highcharts.Polymer_ChartBehavior],
             properties: {
-repos: {
+                repos: {
                     type: Array
                 },
                 type: {type: String, value: 'spline', observer: '_updateType'}},
@@ -38,7 +38,7 @@ repos: {
 
 
             ready: function () {
-                //this.__createChart();
+                this.__createChart();
                 this.$.requestRepos.generateRequest();
             },
             handleResponse: function (data) {
