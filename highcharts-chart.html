@@ -8,13 +8,13 @@
         <div id="Chart" width="150px" on-click="_checkSelected"></div>
         <content></content>
 
-        <!--iron-ajax
+        <iron-ajax
             id="requestRepos"
             url="https://api.github.com/users/burczu/repos"
             params='{"type":"all"}'
             handle-as="json"
             on-response="handleResponse">
-        </iron-ajax-->
+        </iron-ajax>
 
     </template>
     <script>
@@ -23,16 +23,16 @@
             is: "highcharts-chart",
             behaviors: [Highcharts.Polymer_BaseBehavior, Highcharts.Polymer_ChartBehavior],
             properties: {type: {type: String, value: 'spline', observer: '_updateType'}},
-            ready: function() {this.__createChart()},
+            //ready: function() {this.__createChart()},
 
-/*
+
             ready: function () {
                 this.$.requestRepos.generateRequest();
             },
             handleResponse: function (data) {
                 //this.repos = data.detail.response;
                 this.__createChart()
-            }*/
+            }
         });
     </script>
 </dom-module>
