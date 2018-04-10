@@ -44,6 +44,7 @@
             },
             handleResponse: function (data) {
                 this.repos = data.detail.response;
+                console.log("-->" + this.repos);
                 this.__createChart()
             }
         });
