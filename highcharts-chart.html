@@ -2,6 +2,7 @@
 <link rel="import" href="highcharts-shared-styles.html">
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/paper-spinner/paper-spinner.html">
 
 <dom-module id="highcharts-chart">
     <template>
@@ -14,6 +15,7 @@
             handle-as="json"
             on-response="handleResponse">
         </iron-ajax>
+        <paper-spinner alt="Cargando datos..." active="[[cargando]]"></paper-spinner>
 
         <div id="Chart" width="100%" on-click="_checkSelected"></div>
         <content></content>
@@ -26,6 +28,7 @@
             is: "highcharts-chart",
             behaviors: [Highcharts.Polymer_BaseBehavior, Highcharts.Polymer_ChartBehavior],
             properties: {
+                cargando: Boolean,
                 repos: {
                     type: Array
                 },
@@ -38,10 +41,9 @@
                 
 
                 this.$.kyrosapi.generateRequest();
-                //this.$.requestRepos.generateRequest();
             },
             handleResponse: function (data) {
-                //this.repos = data.detail.response;
+                this.repos = data.detail.response;
                 this.__createChart()
             }
         });
