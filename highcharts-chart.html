@@ -27,6 +27,7 @@
 
 
             ready: function () {
+                this.__createChart();
                 this.$.requestRepos.generateRequest();
             },
             handleResponse: function (data) {
