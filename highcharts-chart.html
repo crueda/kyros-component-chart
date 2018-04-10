@@ -23,16 +23,16 @@
             is: "highcharts-chart",
             behaviors: [Highcharts.Polymer_BaseBehavior, Highcharts.Polymer_ChartBehavior],
             properties: {type: {type: String, value: 'spline', observer: '_updateType'}},
-            //ready: function() {this.__createChart()},
+            ready: function() {this.__createChart()},
 
-
+/*
             ready: function () {
                 this.$.requestRepos.generateRequest();
             },
             handleResponse: function (data) {
                 //this.repos = data.detail.response;
                 this.__createChart()
-            }
+            }*/
         });
     </script>
 </dom-module>
